@@ -50,9 +50,22 @@ main {
   border-radius: 8px;
 }
 
+.hero-icon {
+  font-size: 4rem;
+  color: var(--primary-color);
+}
+
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+}
+
+#takeaways {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f1f3f5;
+  border-radius: 8px;
+  margin-top: 2rem;
 }
 
 footer {
@@ -61,6 +74,11 @@ footer {
   padding: 1rem;
   margin-top: 2rem;
   border-top: 1px solid #dee2e6;
+}
+
+h2 .material-symbols-outlined {
+  vertical-align: middle;
+  margin-right: 0.5rem;
 }
 
 @media (max-width: 600px) {
