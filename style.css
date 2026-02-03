@@ -1,10 +1,24 @@
 :root {
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Light Theme (Default) */
   --primary-color: #007bff;
-  --text-color: #333;
+  --text-color: #212529;
   --background-color: #fff;
   --header-bg: #f8f9fa;
-  --footer-bg: #f8f9fa;
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --card-bg: #f1f3f5;
+  --border-color: #dee2e6;
+  --hero-3d-opacity: 0.2;
+}
+
+[data-theme='dark'] {
+  --primary-color: #4dabf7;
+  --text-color: #f8f9fa;
+  --background-color: #212529;
+  --header-bg: #343a40;
+  --card-bg: #495057;
+  --border-color: #495057;
+  --hero-3d-opacity: 0.1;
 }
 
 body {
@@ -13,18 +27,37 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 header {
   background-color: var(--header-bg);
   padding: 1rem;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 nav {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 nav a {
@@ -59,7 +92,7 @@ main {
   transform: translate(-50%, -50%);
   width: 300px;
   height: 300px;
-  opacity: 0.2;
+  opacity: var(--hero-3d-opacity);
   z-index: 0;
 }
 
@@ -76,22 +109,22 @@ main {
 #takeaways {
   text-align: center;
   padding: 2rem;
-  background-color: #f1f3f5;
+  background-color: var(--card-bg);
   border-radius: 8px;
   margin-top: 2rem;
-}
-
-footer {
-  background-color: var(--footer-bg);
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  border-top: 1px solid #dee2e6;
 }
 
 h2 .material-symbols-outlined {
   vertical-align: middle;
   margin-right: 0.5rem;
+}
+
+footer {
+  background-color: var(--header-bg);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);
 }
 
 @media (max-width: 600px) {

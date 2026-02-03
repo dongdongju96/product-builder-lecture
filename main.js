@@ -1,5 +1,70 @@
 import { init3DHero } from './3d-hero.js';
 
+class ThemeToggle extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.STORAGE_KEY = 'theme-preference';
+
+    const template = document.createElement('template');
+    template.innerHTML = `
+      <style>
+        button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0.5rem;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-color);
+        }
+        button:hover {
+          background-color: var(--card-bg);
+        }
+        .icon {
+          font-family: 'Material Symbols Outlined';
+          font-size: 1.5rem;
+        }
+      </style>
+      <button aria-label="Toggle theme">
+        <span class="icon"></span>
+      </button>
+    `;
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    this.button = this.shadowRoot.querySelector('button');
+    this.icon = this.shadowRoot.querySelector('.icon');
+
+    this.theme = this.getThemePreference();
+    this.setTheme();
+
+    this.button.addEventListener('click', () => {
+      this.theme = this.theme === 'dark' ? 'light' : 'dark';
+      this.setTheme();
+    });
+  }
+
+  setTheme() {
+    document.body.dataset.theme = this.theme;
+    localStorage.setItem(this.STORAGE_KEY, this.theme);
+    this.icon.textContent = this.theme === 'dark' ? 'light_mode' : 'dark_mode';
+  }
+
+  getThemePreference() {
+    const storedPref = localStorage.getItem(this.STORAGE_KEY);
+    if (storedPref) {
+      return storedPref;
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+}
+customElements.define('theme-toggle', ThemeToggle);
+
+
 document.addEventListener('DOMContentLoaded', () => {
   // Navigation
   const navLinks = document.querySelectorAll('nav a');
@@ -35,15 +100,17 @@ class GuidelineChecklist extends HTMLElement {
         li {
           padding: 0.75rem 1rem;
           margin: 0.5rem 0;
-          background-color: #fff;
+          background-color: var(--background-color);
+          border: 1px solid var(--border-color);
           border-radius: 8px;
           cursor: pointer;
           transition: background-color 0.2s ease-in-out;
           display: flex;
           align-items: center;
+          color: var(--text-color);
         }
         li:hover {
-          background-color: #e9ecef;
+          background-color: var(--header-bg);
         }
         li.checked {
           background-color: #d4edda;
