@@ -9,6 +9,7 @@ This project is a framework-less web application, designed to demonstrate modern
 - `about.html`: Page explaining the site's purpose.
 - `style.css`: Contains the styling for the application.
 - `main.js`: Contains the core JavaScript logic and Web Components.
+- `3d-hero.js`: Contains the Three.js logic for the homepage 3D animation.
 - `GEMINI.md`: Guidelines and capabilities of the AI agent within this environment.
 - `.idx/dev.nix`: Environment configuration for Firebase Studio.
 - `.idx/mcp.json`: Firebase MCP server configuration.
@@ -16,31 +17,27 @@ This project is a framework-less web application, designed to demonstrate modern
 - `.gitignore`: Specifies intentionally untracked files to ignore.
 - `blueprint.md`: Documents the project's structure, design, features, and development steps.
 
-## Implemented Plan: Visual and Interactive Enhancements
+## Implemented Plan: 3D Hero Animation
 
-**Overview:** To elevate the existing site and make it more engaging, I have introduced iconography, improved visual hierarchy, and added a dynamic, component-based interactive element.
+**Overview:** To further enhance the visual appeal of the site and demonstrate advanced capabilities, I have added a simple, decorative 3D animation to the homepage's hero section using Three.js.
 
 **Implementation Details:**
 
-1.  **Icon Library Integration:**
-    *   Added the Google Fonts Material Symbols library to all HTML pages, enabling the use of modern icons.
+1.  **Three.js Integration:**
+    *   Added the Three.js library to `index.html` using an import map for ES module compatibility.
 
-2.  **Visual Content Enhancement:**
-    *   On `content.html` and `ads.html`, added relevant icons to each section heading to make the content more scannable and visually appealing.
-    *   On the homepage (`index.html`), added a large `auto_awesome` icon to the hero section to improve its visual impact.
+2.  **Homepage Enhancement:**
+    *   Replaced the static hero icon with a `<canvas id="hero-canvas">` element to render the 3D scene.
 
-3.  **Interactive Web Component:**
-    *   Created a new Web Component named `<guideline-checklist>`.
-    *   This component displays an interactive checklist of key AdSense guidelines.
-    *   It uses Shadow DOM for encapsulated styling and behavior.
-    *   Users can click list items to toggle a "checked" state, providing an engaging way to review the content.
-    *   The component is implemented in `main.js` and placed on the homepage within a "Key Takeaways" section.
+3.  **3D Animation Module (`3d-hero.js`):**
+    *   Created a new JavaScript module to encapsulate the Three.js logic.
+    *   The module sets up a scene with a camera, renderer, a rotating `IcosahedronGeometry` (representing a crystal), and a point light.
+    *   The animation runs in a `requestAnimationFrame` loop.
 
-4.  **CSS and JavaScript Updates:**
-    *   Updated `style.css` to include styles for the new icons and the "Key Takeaways" section.
-    *   Updated `main.js` to define the `<guideline-checklist>` custom element and its functionality.
-    *   Improved the navigation script to correctly highlight the active page.
+4.  **JavaScript and CSS Updates:**
+    *   Updated `main.js` to be a module and to conditionally import and initialize the `3d-hero.js` animation on the homepage.
+    *   Updated `style.css` to position the canvas in the background of the hero section, ensuring it is decorative and does not interfere with the text content.
 
 ## Next Steps
 
-The website has been significantly enhanced with visual elements and interactivity, aligning with modern web design principles. I will now commit and push all the changes to the connected GitHub repository.
+The website has been enhanced with a subtle and modern 3D element, making the homepage more dynamic and engaging. I will now commit and push all the changes to the connected GitHub repository.

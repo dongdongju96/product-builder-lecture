@@ -1,14 +1,22 @@
+import { init3DHero } from './3d-hero.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Navigation
   const navLinks = document.querySelectorAll('nav a');
   const currentPath = window.location.pathname === '/' ? '/index.html' : window.location.pathname;
 
   navLinks.forEach(link => {
-    // Handle the case where the link is to the root
     const linkPath = link.getAttribute('href') === '/' ? '/index.html' : link.getAttribute('href');
     if (linkPath === currentPath) {
       link.classList.add('active');
     }
   });
+
+  // 3D Hero
+  const heroCanvas = document.getElementById('hero-canvas');
+  if (heroCanvas) {
+    init3DHero(heroCanvas);
+  }
 });
 
 class GuidelineChecklist extends HTMLElement {

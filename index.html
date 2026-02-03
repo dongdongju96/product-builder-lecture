@@ -6,6 +6,13 @@
   <title>Hello World</title>
   <link href='/style.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.127.0/build/three.module.js"
+      }
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -18,7 +25,7 @@
   </header>
   <main>
     <section class="hero">
-      <span class="material-symbols-outlined hero-icon">auto_awesome</span>
+      <canvas id="hero-canvas"></canvas>
       <h1>Build a Website That Google Loves</h1>
       <p>A guide to creating a high-quality site that passes AdSense review.</p>
     </section>
@@ -31,6 +38,6 @@
   <footer>
     <p>High-Quality Site Guide</p>
   </footer>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <script defer type="module" src="/main.js"></script>
 </body>
 </html>
